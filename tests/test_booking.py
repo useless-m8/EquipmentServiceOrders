@@ -1,5 +1,3 @@
-"""Проверки правил бронирования на граничных случаях."""
-
 import unittest
 from datetime import datetime, timedelta
 from decimal import Decimal

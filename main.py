@@ -1,19 +1,12 @@
-"""ПР1: начальный сценарий сервиса бронирования оборудования."""
-
 from datetime import datetime
 from decimal import Decimal, ROUND_CEILING
 
 
 def is_period_valid(start, end):
-    """Проверить положительную длительность периода."""
     return start < end
 
 
 def is_equipment_available(is_working, start, end, booked_start, booked_end):
-    """Проверить исправность и отсутствие пересечения с одной бронью.
-
-    Конец периода не включается: соседние бронирования допустимы.
-    """
     if not is_period_valid(start, end):
         return False
     if not is_period_valid(booked_start, booked_end):
@@ -23,7 +16,6 @@ def is_equipment_available(is_working, start, end, booked_start, booked_end):
 
 
 def calculate_cost(start, end, hourly_rate):
-    """Рассчитать стоимость с оплатой каждого начатого часа."""
     if not is_period_valid(start, end):
         raise ValueError("Конец периода должен быть позже начала.")
     if not hourly_rate.is_finite() or hourly_rate < 0:
@@ -36,7 +28,6 @@ def calculate_cost(start, end, hourly_rate):
 
 
 def get_booking_status(is_active_user, is_available):
-    """Подтвердить бронь активному пользователю при доступности техники."""
     if not is_active_user:
         return "Отказ: пользователь неактивен."
     if not is_available:
@@ -45,7 +36,6 @@ def get_booking_status(is_active_user, is_available):
 
 
 def main():
-    """Выполнить законченный сценарий на демонстрационных данных."""
     user_name = "Иван Петров"
     is_active_user = True
     equipment_name = "Проектор Epson EB-X49"
