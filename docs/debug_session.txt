@@ -1,0 +1,50 @@
+CORRECT
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(1)<module>()
+-> """ПР1: начальный сценарий сервиса бронирования оборудования."""
+(Pdb) Breakpoint 1 at c:\equipmentserviceorders\tmpao2ayk48\main.py:21
+(Pdb) Сервис бронирования оборудования
+Пользователь: Иван Петров
+Оборудование: Проектор Epson EB-X49
+Период: 15.10.2026 12:00 - 15.10.2026 14:30
+Тариф: 250.00 руб./час (округление часов вверх)
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(21)is_equipment_available()
+-> has_overlap = start < booked_end and booked_start < end
+(Pdb) datetime.datetime(2026, 10, 15, 12, 0)
+(Pdb) datetime.datetime(2026, 10, 15, 12, 0)
+(Pdb) > c:\equipmentserviceorders\tmpao2ayk48\main.py(22)is_equipment_available()
+-> return is_working and not has_overlap
+(Pdb) False
+(Pdb) --Return--
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(22)is_equipment_available()->True
+-> return is_working and not has_overlap
+(Pdb) Бронирование подтверждено.
+Стоимость: 750.00 руб.
+Бронь сформирована в демонстрационном режиме без сохранения.
+The program finished and will be restarted
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(1)<module>()
+-> """ПР1: начальный сценарий сервиса бронирования оборудования."""
+(Pdb) 
+INTENTIONAL BUG
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(1)<module>()
+-> """ПР1: начальный сценарий сервиса бронирования оборудования."""
+(Pdb) Breakpoint 1 at c:\equipmentserviceorders\tmpao2ayk48\main.py:21
+(Pdb) Сервис бронирования оборудования
+Пользователь: Иван Петров
+Оборудование: Проектор Epson EB-X49
+Период: 15.10.2026 12:00 - 15.10.2026 14:30
+Тариф: 250.00 руб./час (округление часов вверх)
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(21)is_equipment_available()
+-> has_overlap = start <= booked_end and booked_start <= end
+(Pdb) datetime.datetime(2026, 10, 15, 12, 0)
+(Pdb) datetime.datetime(2026, 10, 15, 12, 0)
+(Pdb) > c:\equipmentserviceorders\tmpao2ayk48\main.py(22)is_equipment_available()
+-> return is_working and not has_overlap
+(Pdb) True
+(Pdb) --Return--
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(22)is_equipment_available()->False
+-> return is_working and not has_overlap
+(Pdb) Отказ: оборудование недоступно в выбранный период.
+The program finished and will be restarted
+> c:\equipmentserviceorders\tmpao2ayk48\main.py(1)<module>()
+-> """ПР1: начальный сценарий сервиса бронирования оборудования."""
+(Pdb) 
