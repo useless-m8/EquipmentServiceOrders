@@ -1,0 +1,14 @@
+{
+  "users": [
+    {"id": 1, "name": "Иван Петров", "email": "ivan@example.com", "is_active": true},
+    {"id": 2, "name": "Анна Смирнова", "email": "anna@example.com", "is_active": true}
+  ],
+  "equipment": [
+    {"id": 1, "name": "Проектор Epson EB-X49", "hourly_rate": "250.00", "is_working": true},
+    {"id": 2, "name": "Камера Canon", "hourly_rate": "400.00", "is_working": true},
+    {"id": 3, "name": "Ноутбук Lenovo", "hourly_rate": "150.00", "is_working": false}
+  ],
+  "bookings": [
+    {"id": 1, "user_id": 1, "equipment_id": 1, "start": "2026-10-15T09:00:00", "end": "2026-10-15T12:00:00", "is_cancelled": false, "hourly_rate": "250.00"}
+  ]
+}
