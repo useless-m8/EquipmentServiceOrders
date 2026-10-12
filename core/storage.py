@@ -3,8 +3,18 @@ from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
-from models import Booking, Equipment, Period, User
-from services import find_by_id
+from core.models import Booking, Equipment, Period, User
+from core.services import find_by_id
+
+
+def load_project_data(
+    path: Path | None = None,
+) -> tuple[list[User], list[Equipment], list[Booking]]:
+    data_dir = Path(__file__).resolve().parents[1] / "data"
+    source = path if path is not None else data_dir / "service.json"
+    if not source.exists():
+        source = data_dir / "example.json"
+    return load_data(source)
 
 
 def save_data(

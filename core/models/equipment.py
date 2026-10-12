@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from models.period import Period
+from core.models.period import Period
 
 
 class Equipment:

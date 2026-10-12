@@ -3,8 +3,8 @@ from datetime import datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
-from models import Booking, Equipment, Period, User
-from services import (
+from core.models import Booking, Equipment, Period, User
+from core.services import (
     create_booking,
     filter_available,
     find_by_id,
@@ -13,8 +13,8 @@ from services import (
     search_equipment,
     sort_equipment,
 )
-from storage import load_data, save_data
-from utils import input_int, input_period
+from core.storage import load_project_data, save_data
+from core.utils import input_int, input_period
 
 ROOT = Path(__file__).resolve().parent
 
@@ -82,20 +82,18 @@ def main() -> None:
     )
     args = parser.parse_args()
     try:
-        source = ROOT / "data/example.json"
-        if not args.demo and args.data.exists():
-            source = args.data
-        users, equipment, bookings = load_data(source)
+        source = ROOT / "data/example.json" if args.demo else args.data
+        users, equipment, bookings = load_project_data(source)
     except (OSError, ValueError) as error:
         print(f"Не удалось загрузить данные: {error}")
         raise SystemExit(1) from error
-    
+
     if args.demo:
         period = Period(datetime(2026, 10, 15, 12),
                         datetime(2026, 10, 15, 14, 30))
         print(create_booking(bookings, users[0], equipment[0], period))
         return
-    
+
     print("Сервис бронирования оборудования")
     while True:
         print(

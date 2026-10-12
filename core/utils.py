@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from models import Period
+from core.models import Period
 
 
 def input_int(prompt: str) -> int:

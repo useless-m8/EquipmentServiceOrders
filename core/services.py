@@ -1,6 +1,6 @@
 from typing import TypeVar
 
-from models import Booking, Equipment, Period, User
+from core.models import Booking, Equipment, Period, User
 
 Entity = TypeVar("Entity", User, Equipment, Booking)
 

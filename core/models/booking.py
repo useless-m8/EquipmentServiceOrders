@@ -1,8 +1,8 @@
 from decimal import Decimal
 
-from models.equipment import Equipment
-from models.period import Period
-from models.user import User
+from core.models.equipment import Equipment
+from core.models.period import Period
+from core.models.user import User
 
 
 class Booking:

@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from models import Booking, Equipment, Period, User
-from services import (
+from core.models import Booking, Equipment, Period, User
+from core.services import (
     create_booking,
     filter_available,
     find_by_id,
@@ -16,7 +16,7 @@ from services import (
     search_equipment,
     sort_equipment,
 )
-from storage import load_data, save_data
+from core.storage import load_data, save_data
 
 
 @pytest.fixture
