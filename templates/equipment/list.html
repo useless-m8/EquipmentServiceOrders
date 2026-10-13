@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-3">Оборудование</h1>
+<p>Доступно на ближайший час: {{ available_count }}</p>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% for item in equipment %}
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="h5">{{ item.name }}</h2>
+                <p>{{ item.hourly_rate|floatformat:"2u" }} руб./час</p>
+                <p>{% if item.is_working %}Исправно{% else %}На ремонте{% endif %}</p>
+                <a class="btn btn-outline-primary" href="{% url 'equipment_detail' item.id %}">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Оборудование пока не добавлено.</p>
+    {% endfor %}
+</div>
+{% endblock %}

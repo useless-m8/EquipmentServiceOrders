@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'booking_list' %}" class="btn btn-link px-0">← Бронирования</a>
+<div class="card">
+    <div class="card-body">
+        <h1>Бронирование №{{ booking.id }}</h1>
+        <p>Пользователь: {{ booking.user.name }}</p>
+        <p>Оборудование: <a href="{% url 'equipment_detail' booking.equipment.id %}">{{ booking.equipment.name }}</a></p>
+        <p>Период: {{ booking.period }}</p>
+        <p>Стоимость: {{ booking.cost|floatformat:"2u" }} руб.</p>
+        <p>Статус: <span class="badge text-bg-{% if booking.is_cancelled %}secondary{% else %}success{% endif %}">{{ booking.status }}</span></p>
+    </div>
+</div>
+{% endblock %}

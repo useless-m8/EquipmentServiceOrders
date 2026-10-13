@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url 'equipment_list' %}" class="btn btn-link px-0">← Оборудование</a>
+<div class="card">
+    <div class="card-body">
+        <h1>{{ item.name }}</h1>
+        <p>Тариф: {{ item.hourly_rate|floatformat:"2u" }} руб./час</p>
+        <p>Состояние: {% if item.is_working %}исправно{% else %}на ремонте{% endif %}</p>
+        <h2 class="h5 mt-4">Проверить свободное время</h2>
+        <form class="row g-3 mb-4" method="get">
+            <div class="col-md-5">
+                <label class="form-label" for="start">Начало</label>
+                <input class="form-control" id="start" name="start" type="datetime-local" value="{{ start_value }}">
+            </div>
+            <div class="col-md-5">
+                <label class="form-label" for="end">Окончание</label>
+                <input class="form-control" id="end" name="end" type="datetime-local" value="{{ end_value }}">
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button class="btn btn-primary">Проверить</button>
+            </div>
+        </form>
+        {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
+        <p>{{ period }}: <strong>{% if available %}Доступно{% else %}Занято или неисправно{% endif %}</strong></p>
+        <p>Стоимость: {{ cost|floatformat:"2u" }} руб.</p>
+    </div>
+</div>
+{% endblock %}
